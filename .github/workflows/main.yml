@@ -19,9 +19,6 @@ jobs:
         with:
           terraform_version: 1.1.0
 
-      - name: 'Create credentials file'
-        run: echo "${{ secrets.GOOGLE_CREDENTIALS }}" > $GITHUB_WORKSPACE/credentials.json
-
       - name: List Files
         run: ls -l
 
@@ -34,3 +31,4 @@ jobs:
           GOOGLE_PROJECT: 'iac-taller'
           GOOGLE_REGION: 'us-west1'
           GOOGLE_ZONE: 'us-west1-a'
+          GOOGLE_CREDENTIALS: ${{ secrets.GOOGLE_CREDENTIALS}}

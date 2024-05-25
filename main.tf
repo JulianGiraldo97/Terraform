@@ -8,7 +8,7 @@ terraform {
 }
 
 provider "google" {
-  credentials = file("credentials.json")
+  credentials = var.google_credentials
   project     = var.google_project
   region      = var.google_region
   zone        = var.google_zone
@@ -27,6 +27,11 @@ variable "google_region" {
 variable "google_zone" {
   description = "The GCP zone"
   default     = "us-west1-a"
+}
+
+variable "google_credentials" {
+  description = "credentials"
+  default     = "secrets.GOOGLE_CREDENTIALS"
 }
 
 resource "google_compute_network" "vpc_network" {
