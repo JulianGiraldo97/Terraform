@@ -31,4 +31,4 @@ jobs:
           GOOGLE_PROJECT: 'iac-taller'
           GOOGLE_REGION: 'us-west1'
           GOOGLE_ZONE: 'us-west1-a'
-          GOOGLE_CREDENTIAL: ${{ secrets.GOOGLE_CREDENTIAL}}
+          GOOGLE_CREDENTIALS: ${{ secrets.GOOGLE_CREDENTIALS}}

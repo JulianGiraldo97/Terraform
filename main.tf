@@ -8,7 +8,7 @@ terraform {
 }
 
 provider "google" {
-  credentials = var.google_credential
+  credentials = var.google_credentials
   project     = var.google_project
   region      = var.google_region
   zone        = var.google_zone
@@ -29,9 +29,9 @@ variable "google_zone" {
   default     = "us-west1-a"
 }
 
-variable "google_credential" {
+variable "google_credentials" {
   description = "credentials"
-  default     = "secrets.GOOGLE_CREDENTIAL"
+  default     = "/Users/juliangiraldo/Developer/Terraform/iac-taller-1d11bbfe78bc.json"
 }
 
 resource "google_compute_network" "vpc_network" {
