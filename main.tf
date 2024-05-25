@@ -90,6 +90,18 @@ resource "google_compute_firewall" "flask" {
   source_ranges = ["0.0.0.0/0"]
 }
 
+# Install Flask and run the Python app
+  metadata_startup_script = <<-EOF
+    #! /bin/bash
+    sudo apt-get update
+    sudo apt-get install -yq build-essential python3-pip rsync
+    pip3 install flask
+    # Download the Python file from GitHub
+    curl -o /home/${USER}/app.py https://raw.githubusercontent.com/JulianGiraldo97/Terraform/master/test.py
+    # Run the Flask app
+    FLASK_APP=/home/${USER}/app.py flask run --host=0.0.0.0
+  EOF
+
 // A variable for extracting the external IP address of the VM
 output "Web-server-URL" {
  value = join("",["http://",google_compute_instance.default.network_interface.0.access_config.0.nat_ip,":5000"])
