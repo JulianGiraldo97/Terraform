@@ -31,7 +31,7 @@ variable "google_zone" {
 
 variable "google_credentials" {
   description = "credentials"
-  default     = "/Users/juliangiraldo/Developer/Terraform/iac-taller-1d11bbfe78bc.json"
+  default     = "Users/juliangiraldo/Developer/Terraform/iac-taller-1d11bbfe78bc.json"
 }
 
 resource "google_compute_network" "vpc_network" {
