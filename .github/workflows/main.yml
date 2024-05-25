@@ -22,9 +22,6 @@ jobs:
       - name: 'Create credentials file'
         run: echo "${{ secrets.GOOGLE_CREDENTIALS }}" > $GITHUB_WORKSPACE/credentials.json
 
-      - name: Debug: Print Google Credentials Secret
-        run: echo "${{ secrets.GOOGLE_CREDENTIALS }}"
-
       - name: List Files
         run: ls -l
 
