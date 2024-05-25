@@ -1,0 +1,33 @@
+name: Terraform
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  terraform:
+    name: 'Terraform'
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 'Checkout GitHub Action'
+        uses: actions/checkout@v2
+
+      - name: 'Setup Terraform'
+        uses: hashicorp/setup-terraform@v2
+        with:
+          terraform_version: 1.1.0
+
+      - name: 'Create credentials file'
+        run: echo "${{ secrets.GOOGLE_CREDENTIALS }}" > credentials.json
+
+      - name: 'Terraform Init'
+        run: terraform init
+
+      - name: 'Terraform Apply'
+        run: terraform apply -auto-approve
+        env:
+          GOOGLE_PROJECT: 'iac-taller'
+          GOOGLE_REGION: 'us-west1'
+          GOOGLE_ZONE: 'us-west1-a'
