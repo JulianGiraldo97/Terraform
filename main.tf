@@ -8,7 +8,25 @@ terraform {
 }
 
 provider "google" {
-  project = "iac-taller"
+  credentials = file("credentials.json")
+  project     = var.google_project
+  region      = var.google_region
+  zone        = var.google_zone
+}
+
+variable "google_project" {
+  description = "The GCP project to deploy to"
+  default     = "iac-taller"
+}
+
+variable "google_region" {
+  description = "The GCP region"
+  default     = "us-west1"
+}
+
+variable "google_zone" {
+  description = "The GCP zone"
+  default     = "us-west1-a"
 }
 
 resource "google_compute_network" "vpc_network" {
